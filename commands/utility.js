@@ -54,7 +54,11 @@ module.exports = {
 			  if (response) {
 			    // Upon success
 			    const json = response.data;
-					await interaction.reply("```json\n" + JSON.stringify(json, null, ' ') + "```");
+			    const result = JSON.parse(json);
+			    var final = "**" + id + "**\n"
+			    for (var i = 0, res; i < 5; i++)  
+				final += result[id][Object.keys(result)[i]] + "\n"
+		 	    await interaction.reply(final)
 			    resolve(json);
 			  }
 			});
